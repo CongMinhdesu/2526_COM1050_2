@@ -1,0 +1,24 @@
+class Solution:
+    def uniqueOccurrences(self, arr: List[int]):
+        arr = sorted(arr)
+        cnt = 1
+        check = []
+        for i in range (len(arr)-1):
+            if arr[i] == arr[i+1]:
+                cnt = cnt + 1
+                if i == len(arr)-2:
+                    if cnt in check :
+                        return False
+            else:
+                if cnt not in check:
+                    check.append(cnt)
+                else:
+                    return False
+                cnt = 1
+        if arr[-1] != arr[-2]:
+            if 1 in check:
+                return False
+            else:
+                return True
+        return True
+         
