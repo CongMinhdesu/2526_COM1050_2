@@ -1,0 +1,9 @@
+class Solution:
+    def twoSum (nums , target):
+        find = {}
+        for i in range (len(nums)):
+            x = target - nums[i]
+            if x in find:
+                return [find[x], i]
+            else :
+                find[nums[i]] = i
