@@ -1,0 +1,20 @@
+class Solution:
+    def romanToInt(self, s: str):
+        ans = 0
+        check = {'I': 1 , 'V' : 5 , 'X' : 10,'L':50,'C':100,'D':500,'M':1000}
+        p = 0
+        if len(s) == 1:
+            return check[s]
+        else:
+            for i in range (len(s)-1):
+                if s[i] == s[i+1]:
+                    p = p + check[s[i]]
+                elif s[i] != s[i+1]:
+                    if check[s[i]] < check[s[i+1]]:
+                        ans = ans - p - check[s[i]]
+                    else:
+                        ans = ans + p + check[s[i]]
+                    p = 0
+                if i == len(s)-2:
+                    ans = ans + p + check[s[i+1]]
+            return ans
